@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_25_141659) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_25_142220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assigned_yarns", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "project_id", null: false
+    t.bigint "yarn_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_assigned_yarns_on_project_id"
+    t.index ["yarn_id"], name: "index_assigned_yarns_on_yarn_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,5 +60,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_25_141659) do
     t.index ["user_id"], name: "index_yarns_on_user_id"
   end
 
+  add_foreign_key "assigned_yarns", "projects"
+  add_foreign_key "assigned_yarns", "yarns"
+  add_foreign_key "projects", "users"
   add_foreign_key "yarns", "users"
 end
