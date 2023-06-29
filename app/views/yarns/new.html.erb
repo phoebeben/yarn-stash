@@ -1,1 +1,11 @@
 <h1>Add yarn to your inventory</h1>
+<%= simple_form_for(@yarn) do |f| %>
+<%= f.input :name %>
+<%= f.input :brand %>
+<%= f.input :fibre_type %>
+<%= f.input :yarn_weight %>
+<%= f.input :weight %>
+<%= f.input :yardage %>
+<%= f.input :skein_count %>
+<%= f.submit "Add yarn", class: "btn btn-primary m-3" %>
+<% end %>
