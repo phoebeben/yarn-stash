@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
     if @project.save
       @assigned_yarns = AssignedYarn.new(project_id: @project.id, yarn_id: @yarns.id)
       @assigned_yarns.save
-      raise
       redirect_to inventory_path(@project)
     else
       render 'projects/new', status: :unprocessable_entity
