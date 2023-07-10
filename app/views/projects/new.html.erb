@@ -1,0 +1,7 @@
+<h1>Add a new project</h1>
+<%= simple_form_for(@project) do |f| %>
+<%= f.input :name %>
+<%= f.input :start_date %>
+<%= f.collection_select :yarn_ids, Yarn.all, :id, :name %>
+<%= f.submit %>
+<% end %>

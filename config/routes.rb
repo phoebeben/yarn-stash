@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   get "/inventory", to: "pages#inventory"
 
   resources :yarns
+  resources :projects do
+    resources :assigned_yarns
+  end
 end

@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   end
 
   def inventory
+    @yarns = Yarn.all
   end
 end
