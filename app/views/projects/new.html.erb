@@ -3,5 +3,6 @@
 <%= f.input :name %>
 <%= f.input :start_date %>
 <%= f.collection_select :yarn_ids, Yarn.all, :id, :name %>
+<%= f.input :end_date, collection: 1..10%>
 <%= f.submit %>
 <% end %>

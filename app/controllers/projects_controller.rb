@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     @project.user = current_user
     @yarns = Yarn.find(params[:project][:yarn_ids])
     if @project.save
-      @assigned_yarns = AssignedYarn.new(project_id: @project.id, yarn_id: @yarns.id)
+      @assigned_yarns = AssignedYarn.new(project_id: @project.id, yarn_id: @yarns.id, quantity: params[:project][:end_date])
       @assigned_yarns.save
       redirect_to inventory_path(@project)
     else
