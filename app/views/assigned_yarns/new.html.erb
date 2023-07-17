@@ -1,0 +1,7 @@
+<h1>Which yarns will you use for <%= @project.name %>?</h1>
+<%= simple_form_for [ @project, @assigned_yarn ] do |f|%>
+<%= f.collection_select :yarn_id, Yarn.all, :id, :name %>
+<%= f.input :quantity %>
+<%= f.button :submit, "Add more yarn", class: "button-add-more"  %>
+<%= f.button :submit, "Finish", class: "button-finish"  %>
+<% end %>
