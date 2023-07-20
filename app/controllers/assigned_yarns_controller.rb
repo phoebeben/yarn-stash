@@ -8,10 +8,16 @@ class AssignedYarnsController < ApplicationController
     @project = Project.find(params[:project_id])
     @assigned_yarn = AssignedYarn.new(assigned_yarn_params)
     @assigned_yarn.project_id = @project.id
-    if @assigned_yarn.save
-      add_more_check
+    yarn = Yarn.find(params[:assigned_yarn][:yarn_id])
+    submitted_quantity = params[:assigned_yarn][:quantity]
+    if check_quantity(submitted_quantity, @project, yarn) == true
+      if @assigned_yarn.save
+        add_more_check
+      else
+        render 'assigned_yarns/new', status: :unprocessable_entity
+      end
     else
-      render 'assigned_yarns/new', status: :unprocessable_entity
+      redirect_to new_project_assigned_yarn_path(@project), notice: "Not enough yarn quantity to assign."
     end
   end
 
@@ -27,9 +33,13 @@ class AssignedYarnsController < ApplicationController
     end
   end
 
-  def check_quantity
-    AssignedYarn.where(project_id: project.id).each do |yarn|
-      Yarn.find(yarn.id)
+  def check_quantity(submitted_quantity, project, yarn)
+    assigned_yarns = AssignedYarn.where(project_id: project.id, yarn_id: yarn.id)
+    quantity = 0
+    assigned_yarns.each do |assigned_yarn|
+      quantity += assigned_yarn.quantity
     end
+    available_quantity = yarn.skein_count - quantity
+    submitted_quantity.to_i < available_quantity
   end
 end
