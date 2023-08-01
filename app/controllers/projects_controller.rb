@@ -12,17 +12,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user = current_user
-    # selected_yarns = params[:project][:yarn_ids]
     if @project.save
-      # if selected_yarns.length == 1
-      #   yarn_objects = Yarn.find(selected_yarns)
-      #   create_assigned_yarn(yarn_objects)
-      # else
-      #   yarn_objects = selected_yarns.map { |yarn| Yarn.find(yarn) }
-      #   yarn_objects.each do |yarn|
-      #     create_assigned_yarn(yarn)
-      #   end
-      # end
       redirect_to new_project_assigned_yarn_path(@project)
     else
       render 'projects/new', status: :unprocessable_entity
