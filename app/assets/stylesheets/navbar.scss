@@ -11,4 +11,17 @@
   font-size: 30px;
   padding: 15px;
   color: #f17b3c;
+
+  &:hover {
+    color: rgb(247, 177, 112);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #f17b3c;
+}
+
+a:hover {
+  color: rgb(247, 177, 112);
 }

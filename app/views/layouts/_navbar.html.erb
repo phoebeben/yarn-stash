@@ -1,7 +1,16 @@
 <div id="navbar">
   <div id="navbar-icons" class="d-flex justify-content-between">
-   <i class="fa-solid fa-house" id="navbar-icons"></i>
-   <i class="fa-solid fa-house" id="navbar-icons"></i>
-   <i class="fa-solid fa-plus" id="navbar-icons"></i>
+    <div><%= link_to root_path do %>
+      <i class="fa-solid fa-house" id="navbar-icons"></i>
+    </div>
+    <% end %>
+    <div> <%= link_to inventory_path do %>
+     <i id="inventory_link">My Inventory</i>
+   </div>
+   <% end %>
+   <div><%= link_to new_project_path do %>
+    <i class="fa-solid fa-plus" id="navbar-icons"></i>
+   </div>
+   <% end %>
   </div>
 </div>
