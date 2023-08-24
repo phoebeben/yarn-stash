@@ -1,1 +1,8 @@
 <h1 class="text-center" style="font-family: 'Borel', cursive;">My YarnStash</h1>
+<div class="container">
+  <% @yarns.each do |yarn| %>
+  <div class="card">
+    <h3><%= yarn.name %></h3>
+  </div>
+  <% end %>
+</div>
