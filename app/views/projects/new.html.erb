@@ -1,7 +1,24 @@
-<h1>Add a new project</h1>
-<%= simple_form_for(@project) do |f| %>
-<%= f.input :name %>
-<%= f.input :start_date %>
-<%= f.input :description %>
-<%= f.submit %>
-<% end %>
+<div class="landing-header d-flex flex-row justify-content-between">
+  <h1 id="title-landing text-align-center" style="font-family: 'Borel', cursive;">YarnStash</h1>
+  <i class="fa-solid fa-bars" id="menu-bars" style="margin-right: 5px;"></i>
+  <div class="dropdown-menu">
+    <a href="/inventory">My Profile</a>
+  </div>
+</div>
+<h1 class="text-center" style="font-family: 'Borel', cursive; margin-top: 40px;">Add a new project</h1>
+<div class="container">
+  <%= simple_form_for(@project) do |f| %>
+  <div id="project-form-name">
+   <%= f.input :name, :label => "Project Name:"%>
+  </div>
+  <div id="project-form-date">
+    <%= f.input :start_date, :label => "Start Date:"%>
+  </div>
+  <div id="project-form-description">
+   <%= f.input :description, :label => "Project description:"%>
+  </div>
+  <div class="text-center mt-5">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
