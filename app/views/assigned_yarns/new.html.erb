@@ -1,7 +1,15 @@
-<h1>Which yarns will you use for <%= @project.name %>?</h1>
-<%= simple_form_for [ @project, @assigned_yarn ] do |f|%>
-<%= f.collection_select :yarn_id, Yarn.all, :id, :name %>
-<%= f.input :quantity %>
-<%= f.button :submit, "Add more yarn", class: "button-add-more"  %>
-<%= f.button :submit, "Finish", class: "button-finish"  %>
-<% end %>
+<div class="container">
+  <h1 style="font-family: 'Borel', cursive; margin-top: 45px;">Which yarns will you use for <%= @project.name %>?</h1>
+  <div class="yarn-form">
+    <%= simple_form_for [ @project, @assigned_yarn ] do |f|%>
+    <div class="yarn-selection m-4">
+     <%= f.collection_select :yarn_id, Yarn.all, :id, :name %>
+    </div>
+    <div class="quantity-selection m-4">
+      <%= f.input :quantity %>
+    </div>
+    <%= f.button :submit, "Add more yarn", class: "button-add-more btn-info", style: "color: white" %>
+    <%= f.button :submit, "Finish", class: "button-finish btn-info", style: "color: white;"  %>
+    <% end %>
+  </div>
+</div>
