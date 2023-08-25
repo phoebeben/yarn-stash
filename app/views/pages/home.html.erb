@@ -6,7 +6,7 @@
       <div data-drop-down-menu-target="links" class="my-links d-flex flex-column d-none">
         <a href="">My Projects</a>
         <a href="">My Profile</a>
-        <a href="">Log out</a>
+        <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
       </div>
     </div>
     <div class="dropdown-menu">
