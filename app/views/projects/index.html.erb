@@ -1,10 +1,12 @@
 <div class="container">
   <h1 style="font-family: 'Borel', cursive;">Project Index</h1>
   <% @projects.each do |project| %>
+    <%= link_to project_path(project) do %>
     <div class="card m-3">
       <h3>Name: <%= project.name %></h3>
       <p>Start-date:<%= project.start_date %></p>
       <p>End-date:<%= project.end_date %></p>
     </div>
+    <% end %>
    <% end %>
 </div>
