@@ -1,7 +1,14 @@
 <div class="container">
   <div class="landing-header d-flex flex-row justify-content-between">
     <h1 id="title-landing text-align-center" style="font-family: 'Borel', cursive;">YarnStash</h1>
-    <i class="fa-solid fa-bars" id="menu-bars"></i>
+    <div class="d-flex flex-column" data-controller="drop-down-menu">
+      <i class="fa-solid fa-bars" id="menu-bars" data-action="click->drop-down-menu#activate"></i>
+      <div data-drop-down-menu-target="links" class="my-links d-flex flex-column d-none">
+        <a href="">My Projects</a>
+        <a href="">My Profile</a>
+        <a href="">Log out</a>
+      </div>
+    </div>
     <div class="dropdown-menu">
       <a href="/inventory">My Profile</a>
     </div>

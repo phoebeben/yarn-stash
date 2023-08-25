@@ -1,8 +1,10 @@
-<h1 class="text-center" style="font-family: 'Borel', cursive;">My YarnStash</h1>
+<h1 style="font-family: 'Borel', cursive;">My YarnStash</h1>
 <div class="container">
   <% @yarns.each do |yarn| %>
-  <div class="card">
+  <%= link_to yarn_path(yarn) do %>
+  <div class="card m-3">
     <h3><%= yarn.name %></h3>
   </div>
+  <% end %>
   <% end %>
 </div>

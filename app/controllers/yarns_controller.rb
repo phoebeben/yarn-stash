@@ -1,4 +1,8 @@
 class YarnsController < ApplicationController
+  def show
+    @yarn = Yarn.find(params[:id])
+  end
+
   def new
     @yarn = Yarn.new
   end
